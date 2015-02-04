@@ -14,7 +14,7 @@ public class Main {
 			String[] tokens = filteredLine.split(regexManySpaces);
 			
 			if (tokens.length == 2) {
-				long lower_bound = new Long(tokens[0]).longValue();
+			    long lower_bound = new Long(tokens[0]).longValue();
 			    long upper_bound = new Long(tokens[1]).longValue();
 			    boolean flag = false;
 			    long holder = 0;
@@ -29,9 +29,9 @@ public class Main {
 			    
 			    long max_cycle = 0, cycles = 0;
 			    for(long number = lower_bound; number <= upper_bound; number++){
-					cycles = cycle(number,0);
-					if(cycles > max_cycle)
-						max_cycle = cycles;
+				cycles = cycle(number,0);
+				if(cycles > max_cycle)
+				 max_cycle = cycles;
 				}
 			    
 			    if(flag == true){
