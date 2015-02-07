@@ -30,6 +30,7 @@ to set ever higher standards of excellence for themselves
 through competition that rewards team work, problem analysis,
 and rapid software development.
 From Wikipedia.
+
 SAMPLE OUTPUT:
 
 3.74$
