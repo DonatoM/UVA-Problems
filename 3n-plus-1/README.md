@@ -17,10 +17,10 @@ Consider the following algorithm:
 		3. 		 if n = 1 then STOP
 
 
-		4. 		 		 if n is odd then  tex2html_wrap_inline44 
+		4. 		 		 if n is odd then n = 3n + 1 
 
 
-		5. 		 		 else  tex2html_wrap_inline46 
+		5. 		 		 else n=n/2 
 
 
 		6. 		 GOTO 2
