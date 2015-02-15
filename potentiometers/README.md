@@ -9,26 +9,36 @@ its right terminal to the left terminal of potmeter x + 1. The left terminal of 
 terminal of potmeter N are not connected.
 Initially all the potmeters are set to some value between 0 and 1000 Ohms. Then we can do two
 things:
-• Set one of the potmeters to another value.
-• Measure the resistance between two terminals anywhere in the array.
+
+	• Set one of the potmeters to another value.
+	• Measure the resistance between two terminals anywhere in the array.
+
 Input
+
 The input consists less than 3 cases. Each case starts with N, the number of potmeters in the array,
 on a line by itself. N can be as large as 200000. Each of next N lines contains one numbers between 0
 and 1000, the initial resistances of the potmeters in the order 1 to N. Then follow a number of actions,
 each on a line by itself. The number of actions can be as many as 200000. There are three types of
 action:
-• “S x r” - set potmeter x to r Ohms. x is a valid potmeter number and r is between 0 and 1000.
-• “M x y” - measure the resistance between the left terminal of potmeter x and the right terminal
-of potmeter y. Both numbers will be valid and x is smaller than or equal to y.
-• “END” - end of this case. Appears only once at the end of a list of actions.
+
+	• “S x r” - set potmeter x to r Ohms. x is a valid potmeter number and r is between 0 and 1000.
+	• “M x y” - measure the resistance between the left terminal of potmeter x and the right terminal
+	of potmeter y. Both numbers will be valid and x is smaller than or equal to y.
+	• “END” - end of this case. Appears only once at the end of a list of actions.
+
 A case with N = 0 signals the end of the input and it should not be processed.
+
 Output
+
 For each case in the input produce a line ‘Case n:’, where n is the case number, starting from 1.
 For each measurement in the input, output a line containing one number: the measured resistance
 in Ohms. The actions should be applied to the array of potmeters in the order given in the input.
+
 Print a blank line between cases.
 Warning: Input Data is pretty big (∼ 8 MB) so use faster IO.
+
 Sample Input
+
 3
 100
 100
@@ -54,7 +64,9 @@ END
 M 1 10
 END
 0
+
 Sample Output
+
 Case 1:
 100
 300
