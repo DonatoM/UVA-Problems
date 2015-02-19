@@ -4,49 +4,76 @@ import java.util.*;
 public class Main {
 	public static void main(String [] args) throws IOException{
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		List<List<Integer>> case_answers = new ArrayList<List<Integer>>();
+		StringBuilder answers = new StringBuilder("");
 		String line;
+		int case_count = 1;
 		
 		while((line = in.readLine()) != null){
-			ArrayList<Integer> answers = new ArrayList<Integer>();
 			String[] tokens = line.split(" ");
-			
 			int number_of_potentiometers = Integer.parseInt(tokens[0]);
 			
 			if(number_of_potentiometers == 0) break;
 			
-			Integer[] potentiometers = new Integer[number_of_potentiometers+1];
+			answers.append("Case " + (case_count++) + ":\n" );			
+			Fenwick ft = new Fenwick(number_of_potentiometers);
 			
-			for(int i = 1; i < number_of_potentiometers+1; i++)	potentiometers[i] = Integer.parseInt(in.readLine());
+			for(int i = 1; i <= number_of_potentiometers; i++)	ft.set(i, Integer.parseInt(in.readLine()));
 			
 			while(!(line = in.readLine()).equals("END")){
 				String[] row = line.split(" ");
 				String action = row[0];
 								
 				if(action.equals("M")){
-					int total = 0;
 					int left_potentiometer = Integer.parseInt(row[1]);
 					int right_potentiometer = Integer.parseInt(row[2]);
-					for(int i = left_potentiometer; i <= right_potentiometer; i++){
-						total += potentiometers[i];
-					}
-					answers.add(total);
+					int total = ft.sumQuery(left_potentiometer, right_potentiometer);
+					answers.append(total + "\n");
 				}
 				else{
-					Integer index = Integer.parseInt(row[1]);
-					Integer value = Integer.parseInt(row[2]);
-					potentiometers[index] = value;
+					int index = Integer.parseInt(row[1]);
+					int value = Integer.parseInt(row[2]);
+					ft.set(index, value);
 				}
 			}
-			case_answers.add(answers);
+			answers.append("\n");
 		}
-		int case_count = 1;
-		for(List<Integer> item: case_answers){
-			System.out.println("Case " + case_count + ":");
-			for(Integer value: item) System.out.println(value);
-			System.out.println();
-			case_count += 1;
-		}
+		System.out.print(answers.substring(0, answers.length() - 1));
 	}
 }
 
+class Fenwick {
+	public int[] table;
+
+	public Fenwick(int maxN) {
+		this.table = new int[maxN + 1];
+	}
+	
+	public void set(int index, int value){
+		int diff = value - getValue(index);
+		adjust(index,diff);
+	}
+
+	public int sumQuery(int a, int b) {
+		return sumQuery(b) - sumQuery(a - 1);
+	}
+
+	public int sumQuery(int k) {
+		int ret = 0;
+		while (k > 0) {
+			ret += table[k];
+			k &= k - 1;
+		}
+		return ret;
+	}
+
+	public void adjust(int i, int adj) {
+		while (i < table.length) {
+			table[i] += adj;
+			i += (i & (-i));
+		}
+	}
+
+	public int getValue(int i) {
+		return sumQuery(i, i);
+	}
+}
