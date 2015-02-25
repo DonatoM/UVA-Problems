@@ -8,4 +8,7 @@ public class LetMeCountTheWays {
 		while((line = in.readLine()) != null){
 		}
 	}
+	public int count(int[] values, int coins, int sum){
+		return 0;
+	}
 }
