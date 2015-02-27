@@ -3,10 +3,7 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException{
-		
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		String line;
-		StringBuilder answer = new StringBuilder();
+		Scanner scanner =  new  Scanner(System.in);
 		int[] coins = {1,5,10,25,50};
 		long[] cashier = new long[30050];
 		cashier[0] = 1;
@@ -17,14 +14,10 @@ public class Main {
 			}
 		}
 		
-		while(!(line = in.readLine()).isEmpty()){
-			int index = Integer.parseInt(line);
-			if(cashier[index] > 1) answer.append("There are " + cashier[index] + " ways to produce " + index + " cents change.\n");
-			else if(cashier[index] == 1) answer.append("There is only 1 way to produce " + cashier[index] + " cents change.\n");
+		while(scanner.hasNextInt()){
+			int index = scanner.nextInt();
+			if(cashier[index] > 1) System.out.println("There are " + cashier[index] + " ways to produce " + index + " cents change.");
+			else if(cashier[index] == 1) System.out.println("There is only 1 way to produce " + index + " cents change.");
 		}
-		
-		answer.setLength(answer.length() - 1);
-		System.out.println(answer);
 	}
 }
-
